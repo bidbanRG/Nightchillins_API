@@ -2,10 +2,10 @@ const express =  require('express');
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 const  cors = require('cors');
-require("dotenv").config();
+
 const app = express();
 const axios = require('axios');
-mongoose.connect(process.env.MONGOOSE_CONNECTION ,
+mongoose.connect('mongodb+srv://bidesh:bidesh@cluster0.jeepdfc.mongodb.net/Nightchillins?retryWrites=true&w=majority' ,
 {
 useNewUrlParser: true,
 useUnifiedTopology: true
@@ -35,7 +35,7 @@ app.get('/',(req,res) => {
 
 app.get('/news',async (req,res) => {
      try{
-      const { data } = await axios.get(process.env.NEWS_API);
+      const { data } = await axios.get('https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=93b229fa7bac49d3b0742bac0399e20a');
       res.send(data);
     }catch(error){  
       res.send(error.message);
