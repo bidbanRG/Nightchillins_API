@@ -5,6 +5,23 @@ const  cors = require('cors');
 
 const app = express();
 const axios = require('axios');
+app.use('*',function(req, res, next) { //allow cross origin requests
+
+   
+    
+    res.setHeader('Access-Control-Allow-Origin', `https://nightchillins.vercel.app/${req.baseUrl}`);
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 mongoose.connect('mongodb+srv://bidesh:bidesh@cluster0.jeepdfc.mongodb.net/Nightchillins?retryWrites=true&w=majority' ,
 {
 useNewUrlParser: true,
