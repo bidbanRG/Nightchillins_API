@@ -61,7 +61,5 @@ app.get('/news',async (req,res) => {
 
 
 app.listen(PORT,() => {console.log('server is working')})
-// 7a57ce0f-b805-48b0-8405-b8ee3fb06e84
-// aajmnqyz
-// mongodb+srv://bidesh:<password>@cluster0.jeepdfc.mongodb.net/test
-//jmixsgj4
+
+module.exports = app;
