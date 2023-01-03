@@ -62,7 +62,7 @@ router.post('/login',(req,res) => {
 router.post('/getbyId',(req,res) => {
 
   const userDetails = req.body;
-  
+    console.log(userDetails);
   try{
      UserModel.find(userDetails, (err,result) => {
        if(err) res.json(err);
