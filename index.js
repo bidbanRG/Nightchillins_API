@@ -22,7 +22,7 @@ app.use('*',function(req, res, next) { //allow cross origin requests
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
-mongoose.connect('mongodb+srv://bidesh:bidesh@cluster0.jeepdfc.mongodb.net/Nightchillins?retryWrites=true&w=majority' ,
+mongoose.connect(process.env.MONGOOSE_CONNECTION ,
 {
 useNewUrlParser: true,
 useUnifiedTopology: true
@@ -52,7 +52,7 @@ app.get('/',(req,res) => {
 
 app.get('/news',async (req,res) => {
      try{
-      const { data } = await axios.get('https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=93b229fa7bac49d3b0742bac0399e20a');
+      const { data } = await axios.get(process.env.NEWS_API);
       res.send(data);
     }catch(error){  
       res.send(error.message);
